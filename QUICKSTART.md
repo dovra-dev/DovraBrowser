@@ -1,13 +1,13 @@
 # Dovra Beta — Quick start
 
-Batch `beta-20260916` · Windows x64 · English interface.
+Batch `beta-20260923` · Windows x64 · English interface.
 
 ## Verify and open
 
-1. Download the browser ZIP and `SHA256SUMS.txt` from the same [Beta release](https://github.com/dovra-dev/dovra/releases/tag/beta-20260916).
-2. Compare the ZIP with the checksum, for example `Get-FileHash .\Dovra-Beta-20260916-win-x64.zip -Algorithm SHA256` in PowerShell. A checksum checks file identity; it is not a trusted publisher signature.
+1. Download the browser ZIP and `SHA256SUMS.txt` from the project download server: `https://dl.dovra.dev/beta-20260923/Dovra-Beta-20260923-win-x64.zip` and `https://dl.dovra.dev/beta-20260923/SHA256SUMS.txt`. The [Beta release page](https://github.com/dovra-dev/dovra/releases/tag/beta-20260923) lists the same links; this batch has no attachments on GitHub.
+2. Compare the ZIP with the checksum, for example `Get-FileHash .\Dovra-Beta-20260923-win-x64.zip -Algorithm SHA256` in PowerShell. A checksum checks file identity; it is not a trusted publisher signature.
 3. Extract the entire archive into a normal local folder. Do not run the launcher from the ZIP viewer or separate it from `bin/` and `legal/`.
-4. Open `Start-Dovra.exe`. Review the displayed offline Microsoft runtime terms and the linked project terms/privacy notice. Acceptance is your choice. Declining closes the launcher without starting the browser.
+4. Open `dovra_browser.exe`. Review the displayed offline Microsoft runtime terms and the linked project terms/privacy notice. Acceptance is your choice. Declining closes the launcher without starting the browser.
 
 The launcher requires the Windows .NET Framework runtime used by its WinForms interface. This Beta has been tested on Windows Server 2022 x64, OS build 20348.5139; NVIDIA GeForce GTX 650 / ANGLE Direct3D 11; other configurations are not claimed to be verified. No paid certificate or trusted-publisher reputation is claimed. Review the release's signing status; do not disable Windows security settings to install this Beta.
 
@@ -18,14 +18,14 @@ The normal launcher uses `%LOCALAPPDATA%\Dovra\Beta\BrowserData`. Its local runt
 For a separate test profile, pass an explicit path:
 
 ```powershell
-.\Start-Dovra.exe "--user-data-dir=C:\Dovra-Test\Profile"
+.\dovra_browser.exe "--user-data-dir=C:\Dovra-Test\Profile"
 ```
 
 Keep important browsing in a separate browser while evaluating the Beta. Before changing builds, close every process using the selected profile and make a backup you control. Extract a new build into a new program folder. Removing the program folder leaves the default profile above and other files stored outside that folder in place. If you chose a profile or download directory inside the program folder, copy it to a safe location first. There is no Dovra automatic-update service; check the release page for replacement builds and security information.
 
 ## Optional agent toolkit
 
-Get the separately identified toolkit from the release. Follow its README and toolkit guide for Node.js and `playwright-core` requirements. Point `DOVRA_EXE` to this package's `bin\chrome.exe`; point `DOVRA_HOME` to the extracted toolkit directory. The toolkit checks the same local runtime-terms record before it starts this package. It does not accept terms for you.
+Get the separately identified toolkit `Dovra-Toolkit-beta-20260923.zip` from the download server (`https://dl.dovra.dev/beta-20260923/Dovra-Toolkit-beta-20260923.zip`). Follow its README and toolkit guide for Node.js and `playwright-core` requirements. Point `DOVRA_EXE` to this package's `bin\chrome.exe`; point `DOVRA_HOME` to the extracted toolkit directory. The toolkit checks the same local runtime-terms record before it starts this package. It does not accept terms for you.
 
 Named toolkit profiles live under the toolkit workspace's `_logs\dovra-profiles\`. They are separate from the normal launcher profile above and would be removed if you deleted that toolkit directory. Back them up before replacing or removing the toolkit. Reusing a profile does not guarantee that a website will retain a login. Use the toolkit's normal close command and check its result before changing profile files.
 

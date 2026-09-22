@@ -1,6 +1,6 @@
 # Dovra Beta — Privacy Notice
 
-Document date: 16 September 2026. Beta build: `beta-20260916`. This notice covers the Windows x64 Beta, a separately provided toolkit where identified, the project website and correspondence. It does not certify every third-party website or automation service.
+Document date: 23 September 2026. Beta build: `beta-20260923`. This notice covers the Windows x64 Beta, a separately provided toolkit where identified, the project website and correspondence. It does not certify every third-party website or automation service.
 
 ## Who is responsible
 
@@ -10,7 +10,7 @@ The responsible operator is the individual maintainer using the GitHub identity 
 
 A browser profile can retain cookies, site storage, browsing history, cache, settings, download records and credentials you choose to save. Downloads may be stored separately. These local records are not, by their existence alone, information supplied to the Dovra operator. Websites can write data into your profile and read data they are permitted to access.
 
-The default `Start-Dovra.exe` launcher uses `%LOCALAPPDATA%/Dovra/Beta/BrowserData` for browser data unless you provide an explicit `--user-data-dir=...` argument. It also stores a local Microsoft runtime-terms acceptance record under `%LOCALAPPDATA%/Dovra/RuntimeTerms/`. That record contains a format version, a hash identifying the applicable terms and components, the terms revision and an acceptance flag. It contains no name or email address and is not sent to the Publisher by the launcher. Changing or deleting this record may require you to accept the applicable runtime terms again. It is separate from your browsing data.
+The default `dovra_browser.exe` launcher uses `%LOCALAPPDATA%/Dovra/Beta/BrowserData` for browser data unless you provide an explicit `--user-data-dir=...` argument. It also stores a local Microsoft runtime-terms acceptance record under `%LOCALAPPDATA%/Dovra/RuntimeTerms/`. That record contains a format version, a hash identifying the applicable terms and components, the terms revision and an acceptance flag. It contains no name or email address and is not sent to the Publisher by the launcher. Changing or deleting this record may require you to accept the applicable runtime terms again. It is separate from your browsing data.
 
 When separately using the Dovra toolkit launch script, each profile ID selects a directory under `<toolkit workspace>/_logs/dovra-profiles/`; reusing the same profile ID is intended to reuse its data. The script also records a local session pointer under `<toolkit workspace>/_logs/dovra-session.json`. Launching the executable another way can select a different profile directory. Check the active profile path before managing its files.
 

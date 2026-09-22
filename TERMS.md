@@ -1,6 +1,6 @@
 # Dovra Beta — Terms of Use
 
-Document date: 16 September 2026. Beta build: `beta-20260916`.
+Document date: 23 September 2026. Beta build: `beta-20260923`.
 
 ## Publisher and release
 
