@@ -1,11 +1,11 @@
 # Dovra Beta — Quick start
 
-Batch `beta-20260924` · Windows x64 · English interface.
+Batch `beta-20260925-4` · Windows x64 · English interface.
 
 ## Verify and open
 
-1. Download the browser ZIP and `SHA256SUMS.txt` from the project download server: `https://dl.dovra.dev/beta-20260924/Dovra-Beta-20260924-win-x64.zip` and `https://dl.dovra.dev/beta-20260924/SHA256SUMS.txt`. The [Beta release page](https://github.com/dovra-dev/dovra/releases/tag/beta-20260924) lists the same links; this batch has no attachments on GitHub.
-2. Compare the ZIP with the checksum, for example `Get-FileHash .\Dovra-Beta-20260924-win-x64.zip -Algorithm SHA256` in PowerShell. A checksum checks file identity; it is not a trusted publisher signature.
+1. Download the browser ZIP and `SHA256SUMS.txt` from the project download server: `https://dl.dovra.dev/beta-20260925-4/Dovra-Beta-20260925-4-win-x64.zip` and `https://dl.dovra.dev/beta-20260925-4/SHA256SUMS.txt`. The [Beta release page](https://github.com/dovra-dev/dovra/releases/tag/beta-20260925-4) lists the same links; this batch has no attachments on GitHub.
+2. Compare the ZIP with the checksum, for example `Get-FileHash .\Dovra-Beta-20260925-4-win-x64.zip -Algorithm SHA256` in PowerShell. A checksum checks file identity; it is not a trusted publisher signature.
 3. Extract the entire archive into a normal local folder. Do not run the launcher from the ZIP viewer or separate it from `bin/` and `legal/`.
 4. Open `dovra_browser.exe`. It starts the browser in English with the default local profile and shows no dialog; `bin\chrome.exe` can also be started directly. The project terms and privacy notice are in `legal/` and `bin/` for review.
 
@@ -25,7 +25,7 @@ Keep important browsing in a separate browser while evaluating the Beta. Before 
 
 ## Optional agent toolkit
 
-Get the separately identified toolkit `Dovra-Toolkit-beta-20260924.zip` from the download server (`https://dl.dovra.dev/beta-20260924/Dovra-Toolkit-beta-20260924.zip`). Follow its README and toolkit guide for Node.js and `playwright-core` requirements. Point `DOVRA_EXE` to this package's `bin\chrome.exe`; point `DOVRA_HOME` to the extracted toolkit directory. The toolkit starts the selected browser directly; no acceptance step is involved.
+Get the separately identified toolkit `Dovra-Toolkit-beta-20260925-4.zip` from the download server (`https://dl.dovra.dev/beta-20260925-4/Dovra-Toolkit-beta-20260925-4.zip`). Follow its README and toolkit guide for Node.js and `playwright-core` requirements. Point `DOVRA_EXE` to this package's `bin\chrome.exe`; point `DOVRA_HOME` to the extracted toolkit directory. The toolkit starts the selected browser directly; no acceptance step is involved.
 
 Named toolkit profiles live under the toolkit workspace's `_logs\dovra-profiles\`. They are separate from the normal launcher profile above and would be removed if you deleted that toolkit directory. Back them up before replacing or removing the toolkit. Reusing a profile does not guarantee that a website will retain a login. Use the toolkit's normal close command and check its result before changing profile files.
 

@@ -1,20 +1,20 @@
-# Dovra Beta — beta-20260924
+# Dovra Beta — beta-20260925-4
 
 Free experimental Windows x64 portable build with an English interface. This is a Beta, not a stable release or a formal Dovra product version. The underlying Chromium technical version is `153.0.8010.48`.
 
-## What changed since beta-20260923
+## What changed since beta-20260924
 
-- The package no longer contains the Microsoft SDK runtime files `d3dcompiler_47.dll` and `dxil.dll`, nor the DirectX Shader Compiler `dxcompiler.dll` that was built for them. WebGL uses the `d3dcompiler_47.dll` that ships with Windows 10 and later; WebGPU on Direct3D 12 is now built to compile shaders with FXC, so the adapter no longer reports the `subgroups` feature. There are therefore no Microsoft runtime terms to accept: `dovra_browser.exe` is a small entry point that only starts `bin\chrome.exe` with default arguments and shows no dialog, the toolkit performs no acceptance check, and `MICROSOFT-RUNTIME-TERMS.md`, the SDK licence copies and the runtime-terms manifest are no longer part of the package.
-- The ungoogled-chromium first-run page (`chrome://ungoogled-first-run`) is no longer built in; a first start opens the new-tab page.
-- Release files are distributed from `https://dl.dovra.dev/beta-20260924/`; the GitHub release entry carries links only.
-- The Chromium engine (`153.0.8010.48`), the fingerprint patch set and the seed-derived variation module are unchanged from beta-20260923.
+- **Browser — WebRTC name lookups.** In the default WebRTC IP handling of this build (which sends no UDP), WebRTC no longer resolves any host name itself: the names of TURN servers that use TCP (`transport=tcp`) or TLS (`turns:`) are handed to the connection layer, which sends them to the proxy when one is set, and remote candidates whose address is a host name (including mDNS `.local` names) are not resolved at all, with or without a proxy, so a peer is reachable only through its relay or IP-address candidates (a peer offering only host-name candidates and no relay cannot be reached). The earlier build looked these names up with the local DNS resolver or with multicast DNS even with a proxy set. The change is confined to the WebRTC integration of the renderer (`third_party/blink/renderer/platform/p2p/port_allocator.cc` with its header, and `third_party/blink/renderer/modules/peerconnection/peer_connection_dependency_factory.cc`; BSD-licensed Chromium code); the LGPL-licensed Blink files and their modifications are the same as in beta-20260924.
+- **Toolkit.** `Dovra-Toolkit-beta-20260925-4.zip` contains the toolkit changes published as the toolkit-only batches `beta-20260925`, `beta-20260925-2` and `beta-20260925-3` (the `dovra` integration command line: launch contract, identity blueprints, checkpoints). New in this batch: `dovra` recognises this browser build and offers proxies on it (`network.mode = proxy` with `http` or `socks5`); with the `beta-20260924` browser, proxies remain refused.
+- Release files are distributed from `https://dl.dovra.dev/beta-20260925-4/`; the GitHub release entry carries links only.
+- The Chromium engine (`153.0.8010.48`), the rest of the patch set, the seed-derived variation module and the bundled component set are unchanged from beta-20260924.
 
 ## Downloads
 
-All files: `https://dl.dovra.dev/beta-20260924/`
+All files: `https://dl.dovra.dev/beta-20260925-4/`
 
-- `Dovra-Beta-20260924-win-x64.zip`: complete browser, launcher and offline notices.
-- `Dovra-Toolkit-beta-20260924.zip`: optional companion toolkit; no browser included.
+- `Dovra-Beta-20260925-4-win-x64.zip`: complete browser, launcher and offline notices.
+- `Dovra-Toolkit-beta-20260925-4.zip`: optional companion toolkit; no browser included.
 - `SHA256SUMS.txt`: SHA-256 checksums for the release files.
 - Component source, relinking and LGPL modification archives: listed in [SOURCE-MATERIALS.md](SOURCE-MATERIALS.md).
 
@@ -26,12 +26,15 @@ Tested environment: Windows Server 2022 x64, OS build 20348.5139; NVIDIA GeForce
 
 ### Checks run on this batch
 
-- Without a seed, the page-observable build features (`tests/probe-dump.js`, 70 groups) and the open-source FingerprintJS components (`tests/probe-fpjs.js`, 41 components) of the packaged runtime were compared item by item against the beta-20260923 binary; apart from the network downlink and RTT estimates, the only difference is the WebGPU adapter feature list, which no longer contains `subgroups` (FXC shader path).
-- Graphics runtime without the Microsoft SDK files (`tests/probe-gpu-runtime.js`): the WebGL renderer string and the pixel hash of a 64×64 shader-drawn triangle are identical to beta-20260923 (the `d3dcompiler_47.dll` shipped with Windows is used); WebGPU adapter and device creation and a compute dispatch succeed without any command-line flag, with 16 adapter features (17 before).
-- With `--fingerprint=123456789` and `--fingerprint=987654321` (`tests/probe-seeded-noise.js`) every recorded value equals the beta-20260923 run of the same seed, so the seed-derived variation of layout rectangles, text metrics and canvas readback is unchanged.
-- First start (`tests/probe-first-run.js` and a direct start of `bin\chrome.exe` without arguments on a fresh profile): only the new-tab page opens; `chrome://ungoogled-first-run` is no longer a valid URL.
-- `dovra_browser.exe` (thin entry point, 6,144 bytes): started from a three-file layout, it launched `bin\chrome.exe` with `--fingerprint-brand=chrome`, `--lang=en-US` and the default `%LOCALAPPDATA%\Dovra\Beta\BrowserData` profile, passed an explicit `--user-data-dir` and other arguments through unchanged, and exited immediately without showing a dialog.
-- The post-release detection suite (`tests/post-release.js`, 55 signals, recommended profile) reported 33 passes on the packaged runtime and no newly failing item; every remaining item was already attributed on beta-20260923 (`maxTouchPoints` reported by the host machine; the Intl default locale following the en-US interface language of this package; host and site-side items tracked separately).
+- Without a seed, the page-observable build features (`tests/probe-dump.js`, 70 groups) and the open-source FingerprintJS components (`tests/probe-fpjs.js`, 41 components) of the packaged runtime were compared item by item against the beta-20260924 binary: the FingerprintJS components are identical; in the build features only the network downlink estimate and the timer-precision samples differ, and both also vary between two runs of the same binary.
+- With `--fingerprint=123456789` and `--fingerprint=987654321` (`tests/probe-seeded-noise.js`) every recorded value equals the beta-20260924 run of the same seed.
+- Proxy mode, HTTP and SOCKS5 proxy on this machine, DNS traffic captured at the network adapter while pages used freshly generated host names: no local DNS query for the page, its subresources, a STUN server, or TURN servers over UDP, TCP (`transport=tcp`) and TLS (`turns:`); the TURN server names appeared in the requests received by the proxy. Remote candidates added by the page with a host name (UDP and TCP) and with an mDNS `.local` name caused no DNS query and no multicast DNS packet (the capture covered port 5353 as well); on an intermediate build without this part of the change, the same page produced both. A lookup made outside the browser during the same capture was recorded, confirming the capture saw DNS traffic.
+- WebTransport (HTTP/3 over UDP) to a UDP listener on the local network: 0 packets arrived with a proxy set, 6 without a proxy.
+- With an unreachable proxy, navigation fails with `ERR_PROXY_CONNECTION_FAILED`; no direct TCP connection, no UDP and no DNS query for any of the names above were observed.
+- Without a proxy, page and TURN server names are resolved by the browser's network service as before; remote candidate host names are not resolved in this build's default WebRTC IP handling with or without a proxy.
+- The toolkit's test suite passes all 61 checks on this build, none skipped, including the live proxy tests (`proxy http`, `proxy socks5`: pages and downloads reach the proxy by host name, no other TCP connection from any browser process, no WebRTC UDP to an IP-literal STUN server).
+- Packaged runtime (`tests/t11-acceptance.js`): the credits page renders, `LICENSE`, `NOTICE` and `TERMS.md` are present in `bin/`, and a 60-second idle run made no request to any external host.
+- The post-release detection suite (`tests/post-release.js`, 55 signals, recommended profile) reported 33 passes on the packaged runtime, the same as beta-20260924, and no newly failing item; every remaining item was already attributed on earlier batches (`maxTouchPoints` reported by the host machine; the Intl default locale following the en-US interface language of this package; host and site-side items tracked separately).
 
 ### Carried over from the beta-20260916 build of the same engine
 

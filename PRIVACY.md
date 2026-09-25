@@ -1,6 +1,6 @@
 # Dovra Beta — Privacy Notice
 
-Document date: 24 September 2026. Beta build: `beta-20260924`. This notice covers the Windows x64 Beta, a separately provided toolkit where identified, the project website and correspondence. It does not certify every third-party website or automation service.
+Document date: 25 September 2026. Beta build: `beta-20260925-4`. This notice covers the Windows x64 Beta, a separately provided toolkit where identified, the project website and correspondence. It does not certify every third-party website or automation service.
 
 ## Who is responsible
 
