@@ -1,45 +1,38 @@
-# Source and relinking materials
+# Dovra — Source and relinking materials
 
-Dovra 1.2.0 · Chromium 155.0.8059.85 · Windows x64. [manifest.md](manifest.md) identifies the source34 application pair.
+Version `1.1.0` · Windows x64 · Chromium engine `153.0.8010.48`.
 
-## Official base and finite supplements
+The browser statically links FFmpeg-derived software under LGPL 2.1 or later, together with separately licensed portions. The component licence, copyright and source-file notices remain applicable. Dovra-specific terms do not prohibit modification for your own use or reverse engineering to debug those modifications.
 
-The upstream archive is `chromium-155.0.8059.85.tar.xz`, 4,391,079,296 bytes, SHA-256 `673670a10e8194efcdd1609600cc55f3dd2b7f248543dc3559b3d17176927bd4`, revision `0e66b94549a8bd85f03fbdf189b752d6e7b63c32`.
+## Get the matching materials
 
-Official origin: <https://commondatastorage.googleapis.com/chromium-browser-official/chromium-155.0.8059.85.tar.xz>. This upstream source alone is not the complete matching Dovra source/relink delivery. GitHub automatic repository archives are not substitutes for it or for the finite supplements.
+All files below accompany the browser on the project download server (`https://dl.dovra.dev/1.1.0/`), and the [release page](https://github.com/dovra-dev/DovraBrowser/releases/tag/v1.1.0) links to them. They are available without any acceptance step or individual access request. Check the archive names and SHA-256 values; a different build's link inputs may not be compatible.
 
-The matching reconstruction follows the original two relink archives, the source27 update, source28 update, source29 update and one combined source34 update in that order. The source34 update combines two source29-to-source31 and five source31-to-source34 postimages, seven files totalling 30,783,186 bytes. No separate public source31 archive is required. The current public input-map SHA-256 is `1077a720db1c81761a3ea819a6754d75fea6bf523f952b7b1297b82f50b5be32`; it describes 47,830 internal inputs and 94 external prerequisites. A map checksum is not the ZIP checksum.
-
-| Material | Bytes | SHA-256 |
+| Asset | Bytes | SHA-256 |
 | --- | ---: | --- |
-| [chromium-155.0.8059.85.tar.xz.part01](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/chromium-155.0.8059.85.tar.xz.part01) | 1500000000 | `c3f3c2174d5d2dd84a5d235e20a2392de2392386c3a782ae658a31ba04ea06a0` |
-| [chromium-155.0.8059.85.tar.xz.part02](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/chromium-155.0.8059.85.tar.xz.part02) | 1500000000 | `abcd93a0f91bc851caec53d68f91cf15d05f97c9fda2e311a900622dd9299a50` |
-| [chromium-155.0.8059.85.tar.xz.part03](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/chromium-155.0.8059.85.tar.xz.part03) | 1391079296 | `b281efc80950972a5c5701845897479052d1c290b30d852230d74d9717793b8a` |
-| [relink-part-01.zip](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/relink-part-01.zip) | 380438517 | `c0e33f400b56d9a012fc2993ebd2ba6a7cdcbeb7f572034fe6fef4c266d0245c` |
-| [relink-part-02.zip](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/relink-part-02.zip) | 263826753 | `4d66fab9c89d9dbef129c4cfb874c4401c99029192fcd969433d69b5d409b100` |
-| [Dovra-1.2.0-relink-source27-update.zip](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/Dovra-1.2.0-relink-source27-update.zip) | 3449634 | `b70e02edd6a3c9bac440d15741cdd8e4af6139037b60847d90b0976c75ce61d6` |
-| [Dovra-1.2.0-relink-source28-update.zip](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/Dovra-1.2.0-relink-source28-update.zip) | 3133324 | `3a46b95175af4655dcf55e573ff1934bfd3f986f6747d1ae1bdac7dc5b184ca0` |
-| [Dovra-1.2.0-relink-source29-update.zip](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/Dovra-1.2.0-relink-source29-update.zip) | 3029240 | `94e81f1f53b46deffc01cbe1fd6e3be0b5e488436efa6e4d2f94f23e80c30655` |
-| [Dovra-1.2.0-relink-source34-update.zip](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/Dovra-1.2.0-relink-source34-update.zip) | 5748594 | `77067eaeeb8747bc2696bb1ef849b8a864b7febe059b0a662afc5249e4e454f1` |
-| [Dovra-1.2.0-component-source-build-licence-candidate.zip](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/Dovra-1.2.0-component-source-build-licence-candidate.zip) | 628091 | `73cf40896ae81887d9e43a3935f412eec5d8acfa4f15316364ef56d9bb99f170` |
-| [Dovra-1.2.0-generated-headers.zip](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/Dovra-1.2.0-generated-headers.zip) | 4915492 | `99390a70ed13e952d1d9823bb1ca1d30b1091fb80b05e2cd82c2040cbcc40199` |
-| [Dovra-1.2.0-ffmpeg-build-provider-controls.zip](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/Dovra-1.2.0-ffmpeg-build-provider-controls.zip) | 47534 | `5e6d292f6186f77f69690da09475aa819ac1c57235e77a26ded81c25236512e2` |
-| [Dovra-1.2.0-ffmpeg-dependency-provider-index.zip](https://github.com/dovra-dev/DovraBrowser/releases/download/v1.2.0/Dovra-1.2.0-ffmpeg-dependency-provider-index.zip) | 40410 | `a91dfe345d7a5a81438e09649c3cc3cd90f6f76798b96e09cdb8100862f0d3e5` |
+| dovra-ffmpeg-source.tar.gz | 19982329 | `82b3bd4374c62b311b53fb6d98059225588319c9019df4646a3f1a26c1420679` |
+| dovra-opus-source.tar.gz | 4365781 | `e779d2069a4bc2f4962ea834c910c6b33ba5db08a66ef1b60dc0a6dd797301c1` |
+| Dovra-lgpl-blink-modifications-1.1.0.zip | 15764 | `ada6c88b014398efb082992c18ef0eb5a2eca883f8dcc44dda052faa790bbf5c` |
+| Dovra-rebuild-companion-1.1.0.zip | 966570 | `4e2c6daf500f7f5588abb11a22f1cca9af07569ec7992fccde60ff9fe5a533bb` |
 
-Concatenate the three numbered official-source parts in order to recover the upstream archive identified above. Extract relink parts 01 and 02, then apply updates source27, source28, source29 and source34 in that order. Use the accompanying component source/build/licence, generated-header and FFmpeg provider supplements. The combined source34 update supplies the current Blink plan overlay: place it adjacent to the original helper as blink-plan.json. Current public-helper validation completed 16 steps, including four compilation and two thin-archive commands; this is bounded reconstruction evidence, not a byte-for-byte browser reproduction claim.
+The FFmpeg archive contains the complete prepared source subtree, configuration, notices, transformations and reconstruction instructions. The Opus archive contains its complete prepared subtree and reproduction records. The LGPL Blink modifications archive contains, as unified diffs against the unmodified upstream files, every modification made to the LGPL-2.1 Blink source files of this build (`element.cc`, `range.cc`, `local_frame.cc`, `navigator.cc`); FFmpeg is covered by the archives above. The rebuild companion provides the recorded compile actions and FFmpeg thin-archive commands for rebuilding the modified FFmpeg library.
 
-The preservation record contains 240 source/resource entries: 173 native browser files, 57 official additions and 10 branding resources, with 33 code patches plus one resource overlay. That private preservation count does not identify a public source archive. Separately scoped Blink source, three interfaces and their licence texts, FFmpeg source/configuration and build controls, generated-header indices and relinking supplements retain their individual allowlists and licences. Private implementations are not included merely because a declaration is supplied. No silence-test patch or modified-library experiment is production browser source.
+These source archives are byte-identical to those of the prior build of the same engine (the FFmpeg and Opus sources and configuration do not change with the application patches). A general upstream URL or patch alone is not a substitute for the supplied exact materials.
 
-## Reconstruction and external prerequisites
+## Exact browser pairing and verification
 
-The current source34 delivery layout passed full input validation and five native reconstruction commands. Both official final EXE operations and two targeted PCM cases passed in that material layout. Conservative input/search coverage does not prove selection of every archive member or byte-for-byte reproduction of the main browser. Official final executable processing and targeted decoding tests have separate receipts; their results do not replace final application-archive acceptance.
+| Original browser file | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `bin/chrome.exe` | 3893248 | `fc5a245985c99c83960bbcf733c9ee2c91d97cb67bac84730730eafa215ca434` |
+| `bin/chrome.dll` | 333719552 | `5996b639a4c364eeba7a967dedce53a9f405c628692122df8bb5895901f1092f` |
+| `bin/resources.pak` | 22787876 | `081c25358279c047fe6b4104657a27d9ce811bb51946836e75c0d9555cd138ea` |
 
-Use the matching portable recipes and explicit tool/provider identities. MSVC, Windows SDK and other external prerequisites remain subject to their own acquisition and licence terms and are not all redistributed. Do not overlay reconstruction materials onto an installed browser, an active source tree or a user profile. The original/modified relink variants and test libraries are not substitutes for the main browser pair in [manifest.md](manifest.md).
+These identities bind the original browser files to the supplied inputs. The outer browser ZIP checksum is listed separately in `SHA256SUMS.txt`. A successful link or an embedded marker alone does not establish playback or compatibility with every possible FFmpeg modification.
 
-## Availability and licences
+## Licences
 
-The asset links above identify the matching material set for this release. The Toolkit is a separate optional companion and is not part of this application ZIP. The earlier 1.1.0 materials issue remains separate.
+Read `bin/NOTICE`, `bin/licenses/` and the notices in each source archive. The LGPL text is in `bin/licenses/LGPL-2.1.txt`. These files do not place every application object under a single licence or provide patent rights beyond any express applicable upstream grant. Only the auxiliary files expressly identified by their own licence use the included Dovra tools licence.
 
-Retain all applicable component notices and licence texts. The [Terms](https://dovra.dev/terms/) and [Privacy notice](https://dovra.dev/privacy/) were adopted on 17 October 2026. Scoped grants for interface declarations, tools or documentation do not relicense the entire browser or certify the complete delivery. Physical-input acceptance is not certified by these material records.
+GitHub's automatic repository source ZIP/tarball is not the compiled browser, complete FFmpeg source archive or application relinking kit. Use the explicitly named release assets above.
 
-Publisher: DOVRA SOFTWARE LTD, company number 17493263. Contact: <dovra.dev@gmail.com>. Built on Chromium; not affiliated with or endorsed by Google.
+For a missing or damaged material, contact legal@dovra.dev with the version, filename and a redacted description. Do not send credentials or a browser profile.
