@@ -1,61 +1,43 @@
-# Dovra — 1.1.0
+# Dovra 1.3.0 release notes
 
-Windows x64 portable build with an English interface. Product version `1.1.0`. The underlying Chromium technical version is `153.0.8010.48`.
+Windows x64; Chromium 158.0.8127.18. This is the 1.3.0 release. The browser reports product version 1.3.0 on the 158 engine.
 
-## What changed in 1.1.0
+## Release history in this document
 
-- **Native control bar (T-074 P1).** The browser now shows a built-in control bar for agent mode status and human takeover. The bar is drawn by the browser UI layer and does not inject into page DOM.
-- **Input authorization (T-074 P2–P4).** In agent mode, physical keyboard and mouse input is gated at the browser input layer. CDP-authorized input (Input.insertText, Input.dispatchMouseEvent, etc.) passes through normally. After human takeover, a generation gate rejects stale agent CDP input.
-- **Extended input paths gated (T-074 P5–P9).** IME composition, OS drag-and-drop, clipboard paste, context menu commands, and accessibility actions are gated in agent mode. Four of these paths require manual verification (see test documentation).
+1.2.0 was published on 22 October 2026 and withdrawn on 25 October 2026. It is no longer distributed, and its download addresses no longer resolve. The notes below therefore describe the whole sequence — 1.1.0, the release that was publicly downloadable before 1.2.0, then 1.2.0, then 1.3.0 — so that the history is complete without pointing at withdrawn files.
 
-## Data directory change
+## Changes from 1.1.0 to 1.2.0
 
-The default browser data directory is `%LOCALAPPDATA%\Dovra\BrowserData`. Pre-1.0 builds used `%LOCALAPPDATA%\Dovra\Beta\BrowserData`. The old directory is not automatically migrated. Copy or move its contents to the new path yourself if you wish to keep them.
+- Native Agent/Human control bar with Take Control and Resume Agent; takeover revokes previous automation authorization.
+- Native control-state interfaces and authenticated automation integration.
+- Native save-dialog and JavaScript-dialog support for authorized automation.
+- Google Search defaults for fresh profiles, while preserving existing choices.
+- Versioned source patches and branding overlay for repeatable Chromium upgrades.
 
-## What changed since pre-1.0 builds
+## Changes from 1.2.0 to 1.3.0
 
-- **Product version.** This is Dovra 1.1.0, a formal product version. Pre-1.0 builds used date-based identifiers without assigning a formal product version.
-- **Branding.** Company name is DOVRA SOFTWARE LTD throughout the package, including the launcher PE fields. The default data path no longer includes a `Beta` segment.
-- **Engine.** Chromium `153.0.8010.48`. The fingerprint parameter patches, network hardening and toolkit integration are carried over from the prior build of the same engine.
+- The product display version moved from 1.2.0 to 1.3.0 for this engine upgrade. The dovra CLI protocol stays `dovra.cli` 1.0; there are no breaking changes.
+- The Chromium engine moved from 155.0.8059.85 to 158.0.8127.18. The Dovra patch set was ported to the new engine and the build configuration is unchanged apart from the engine version.
+- The launcher defaults now take effect when the caller passes a `--` argument: Chromium ends switch parsing at that sentinel, so the launcher inserts its defaults before it. The launcher's other behaviour and its defaults are unchanged; the default user-data directory and interface language are the same as in 1.2.0.
+- The default settings and the legal documents are unchanged from 1.2.0.
+- The 1.2.0 package carries two Privacy Sandbox attestations preload files that the 158 engine no longer produces for Windows: upstream 158 stopped adding them to the product directory and ships no desktop reader for them. This package therefore carries two runtime files fewer than the 1.2.0 package.
 
-## Downloads
+## Validation scope
 
-All files: `https://dl.dovra.dev/1.1.0/`
+**Run on the 1.3.0 binaries.** The 1.3.0 build was compared with the 1.2.0 package and with an earlier build of the same 158 engine; the comparison found no behavioural difference that the engine upgrade introduced. On the 1.3.0 binaries the following were exercised: launch and identity in headless and headed mode, the UA-CH version fields, the release gate for credits, legal files and telemetry, a 60-second network log, a direct network probe, the default search provider, the five basic Playwright operations, three File System Access frames, and the optional Toolkit command set.
 
-- `Dovra-1.1.0-win-x64-portable.zip`: complete browser, launcher and offline notices.
-- `SHA256SUMS.txt`: SHA-256 checksums for the release files.
-- Component source, relinking and LGPL modification archives: listed in [SOURCE-MATERIALS.md](SOURCE-MATERIALS.md).
+**Carried from the previous engine.** The native-control matrix was not re-run on the 158 engine. It stands at 34 of 38 cases, adopted from direct, reviewed carry-forward and composed evidence on the 155 build of 1.2.0 — it is not 38 fresh runs on this pair. Core takeover, Human input, fresh authorization, stale-authorization rejection, disconnect handling and normal close have reviewed evidence from that build. Three virtual displays were checked at actual 100%, 150% and 200% Windows DPI settings on that build. The 53 selected configuration, profile, storage, controller and proxy regression cases were completed on that build as well. The four deferred scenarios are the same ones deferred at 1.2.0, with the same reasons: native context-menu paste, OS drag-and-drop, renderer-crash recovery, and manual input recovery after a safety-bar layout failure.
 
-GitHub's automatic repository source ZIP/tarball contains repository files, not the compiled browser or the full Chromium source tree.
+Validation remains incomplete for native context-menu paste, OS drag-and-drop, renderer-crash recovery, and manual input recovery after a safety-bar layout failure. This release does not claim complete coverage of all native-control scenarios.
 
-## Verified scope
+These incomplete validations are not classified as confirmed Chromium defects. No claim is made of comprehensive hardware, accessibility, input-method or failure-recovery coverage. Do not treat Agent mode as an operating-system security boundary.
 
-Tested environment: Windows Server 2022 x64, OS build 20348.5139; NVIDIA GeForce GTX 650 / ANGLE Direct3D 11.
+## Maintenance and compatibility
 
-### Native control bar and agent input authorization
+Google Safe Browsing and automatic component updates, including security-data updates, are disabled by default. Do not assume bundled security data stays current. Manual component-update and final network acceptance remain incomplete. Automatic GAIA browser-account reconciliation and GCM background services are disabled by default. OAuth, Web Push and compatibility with every website are not guaranteed. Websites, certificate retrieval, user-initiated updates and connected tools can still make network requests. These defaults are not a zero-network or anonymity guarantee.
 
-Automated acceptance 5/5 pass: the control bar UI is present and does not pollute the page DOM. CDP `insertText` and `dispatchDragEvent` authorization input passes under agent mode. Clipboard paste is intercepted under agent mode. The generation gate does not false-trigger (CDP input is normal without takeover).
+Use separate profiles and retain backups before migration. New profiles default to Google; manual choices persist. Searches are processed by the selected provider under its terms and privacy policy.
 
-### Checks carried over from the prior build of the same engine
+Read [SOURCE-MATERIALS.md](SOURCE-MATERIALS.md) for matching materials and reconstruction limits. The [Terms](https://dovra.dev/terms/) and [Privacy notice](https://dovra.dev/privacy/) were adopted on 17 October 2026. Optional companion-tool licences do not relicense the browser.
 
-The following checks were performed on the prior build (same engine and configuration) and were not repeated for this release. Accepted tests: English built-in pages and the engine version were checked; the version, Settings, credits and GPU pages were visually reviewed. Targeted checks covered eight credits entries with complete licence text and expanded display, Canvas output, a WebGL 2 draw/readback, short local PCM and FLAC playback, and test localStorage retained after a graceful close and reopen. Proxy mode (HTTP and SOCKS5) was tested with DNS traffic capture: no local DNS query for pages, subresources, STUN or TURN servers. WebTransport sent 0 UDP packets with a proxy set. The toolkit's test suite passes all 61 checks including live proxy tests. Packaged runtime checks confirmed credits page renders, LICENSE/NOTICE/TERMS.md present in `bin/`, and 60-second idle run made no request to any external host. The post-release detection suite (55 signals) reported 33 passes with no newly failing item.
-
-Code is in place but pending manual validation: IME composition input, TSF password learning gate, OS drag-and-drop, context-menu commands, and accessibility (AX) actions.
-
-The tested CDP endpoint listened only on 127.0.0.1, rejected the tested foreign Host requests and foreign/null WebSocket Origin handshakes, and permitted the trusted local client. A foreign-Origin HTTP request returned 200 without an Access-Control-Allow-Origin response header; it was not rejected at the HTTP layer. Local programs can still control the browser through CDP. This is not authentication or protection from local malware.
-
-The reviewed idle NetLog fields recorded WPAD activity and no external destination host. This finite observation is not a zero-network or zero-telemetry guarantee. WebGL success does not verify all WebGPU, GPU, codec or sandbox paths. Nonfatal SharedImageManager::ProduceSkia mailbox messages were observed; the sampled drawing and playback checks completed.
-
-Signing status: `dovra_browser.exe`, `bin/chrome.exe` and `bin/chrome.dll` are unsigned (NotSigned), Azure Trusted Signing in progress. A checksum identifies bytes; it is not a trusted publisher signature.
-
-The test scope is finite. Windows 10/11 client systems, a standard-user installation, every GPU, every media format and every website are not claimed to have been tested. Site compatibility, preserved login state and uninterrupted operation are not guaranteed.
-
-## Use and limitations
-
-Use this build for lawful workflows and authorized testing. Keep backups and a separate browser for important browsing. Configurable browser parameters do not grant access or guarantee anonymity.
-
-The build does not provide a Dovra automatic updater. Google Safe Browsing is disabled in this build; do not rely on it for remote phishing or malware checks. The privacy notice explains the reviewed background-service settings and their limits. No universal zero-network or zero-telemetry guarantee is made.
-
-Read the offline terms when starting the package. Project terms do not replace component licences or remove applicable open-source modification and relinking rights. The companion toolkit has a separate MIT licensing scope.
-
-Project: https://dovra.dev/ · Support: legal@dovra.dev
+DOVRA SOFTWARE LTD, company number 17493263. Contact: <dovra.dev@gmail.com>. Built on Chromium; not affiliated with or endorsed by Google.

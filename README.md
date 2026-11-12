@@ -1,23 +1,27 @@
-# Dovra
+# Dovra 1.3.0
 
-A Chromium-based browser built for AI agents and automation workflows, with Playwright and agent control support.
+A Chromium-based browser for authorized agent workflows and web testing. Windows x64; Chromium 158.0.8127.18.
 
-**[Download Dovra — 1.1.0](https://dl.dovra.dev/1.1.0/Dovra-1.1.0-win-x64-portable.zip)** · [all files and checksums](https://dl.dovra.dev/1.1.0/) · [release page](https://github.com/dovra-dev/DovraBrowser/releases/tag/v1.1.0)
+This is the 1.3.0 release. The product display version is 1.3.0 and the engine underneath is Chromium 158.0.8127.18, so the binaries in this release differ from every earlier Dovra package, including 1.2.0 (published on 22 October 2026 and withdrawn on 25 October 2026; it is no longer distributed). The two must not be mixed in one directory and their files are not interchangeable.
 
-Version 1.1.0 is a formal product release published by DOVRA SOFTWARE LTD. The underlying Chromium technical version is `153.0.8010.48`.
+Read [QUICKSTART.md](QUICKSTART.md) before first use, [RELEASE-NOTES.md](RELEASE-NOTES.md) for tested scope and limitations, and the [Terms](https://dovra.dev/terms/) and [Privacy notice](https://dovra.dev/privacy/). The extracted browser ZIP also includes these notices in `legal/`. Use only systems you are authorized to access.
 
-- [Quick start](QUICKSTART.md): checksums, extraction, first launch and profiles.
-- [Release notes](RELEASE-NOTES.md): tested environment, signing status and limitations.
-- [Component source and relinking materials](SOURCE-MATERIALS.md).
-- [Terms](TERMS.md) and [privacy notice](PRIVACY.md).
-- [Project website](https://dovra.dev/).
+## Control
 
-Get `Dovra-1.1.0-win-x64-portable.zip` for the browser and `SHA256SUMS.txt` for checksums, both from `https://dl.dovra.dev/1.1.0/`. The companion toolkit is a separate download. GitHub's automatic repository source archives are documentation, not browser downloads or the complete Chromium source tree.
+The native Agent/Human bar lets you take control and resume agent work. Taking control revokes the previous automation authorization. An agent must observe the control state and obtain fresh authorization before continuing. Closing the notification and taking control are distinct actions.
 
-Use Dovra for lawful workflows and authorized testing. Configurable browser parameters do not grant access, change your network location or guarantee anonymity or website compatibility. Keep a separate browser and backups for important browsing.
+Validation remains incomplete for native context-menu paste, OS drag-and-drop, renderer-crash recovery, and manual input recovery after a safety-bar layout failure. This release does not claim complete coverage of all native-control scenarios.
 
-Browser components retain their respective licences. The toolkit and launcher source use MIT; that licence does not relicense the whole browser. Source and relinking materials are available from the same download server without individual approval.
+## Maintenance and privacy
 
-Questions: [legal@dovra.dev](mailto:legal@dovra.dev). Include the version and a small, redacted reproduction. Do not send passwords, tokens, full profiles or identity documents in routine support messages.
+Google Safe Browsing and automatic component updates, including security-data updates, are disabled by default. Do not assume bundled security data stays current. Manual component-update and final network acceptance remain incomplete. Automatic GAIA browser-account reconciliation and GCM background services are disabled by default. OAuth, Web Push and compatibility with every website are not guaranteed. Websites, certificate retrieval, user-initiated updates and connected tools can still make network requests. These defaults are not a zero-network or anonymity guarantee.
 
-Built on Chromium. Not affiliated with or endorsed by Google.
+Use a separate profile when evaluating this version. Do not open an important existing profile with a newer engine without a backup. Separate profiles are not operating-system security boundaries. New profiles default to Google Search; user, extension and managed-policy choices take precedence. Google Search requests are governed by [Google's Privacy Policy](https://policies.google.com/privacy).
+
+## Distribution
+
+Download the [Windows x64 portable ZIP](https://dl.dovra.dev/1.3.0/Dovra-1.3.0-win-x64-portable.zip) and compare its SHA-256 with [SHA256SUMS.txt](https://dl.dovra.dev/1.3.0/SHA256SUMS.txt). Browser ZIP SHA-256: `d04c91ecda3c414b6186802d2f2cb3fdac14576da9276a869de7d968e0b17d6b`. In the extracted browser ZIP, the browser is in `bin/` and `dovra_browser.exe` is the launcher. See [manifest.md](manifest.md) for core file identities and [SOURCE-MATERIALS.md](SOURCE-MATERIALS.md) for matching source and relinking materials. Optional Toolkit software is distributed separately. GitHub automatic repository archives are not browser packages or complete matching Chromium materials.
+
+The [Terms](https://dovra.dev/terms/) and [Privacy notice](https://dovra.dev/privacy/) were adopted on 17 October 2026 and are the same documents the 1.2.0 package carried. Component licences retain their own scope. Report small, redacted reproductions with the exact version; never send credentials or complete profiles.
+
+DOVRA SOFTWARE LTD, company number 17493263. Contact: <dovra.dev@gmail.com>. Built on Chromium; not affiliated with or endorsed by Google.
