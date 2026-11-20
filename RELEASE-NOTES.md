@@ -1,10 +1,10 @@
-# Dovra 1.3.0 release notes
+# Dovra 1.3.1 release notes
 
-Windows x64; Chromium 158.0.8127.18. This is the 1.3.0 release. The browser reports product version 1.3.0 on the 158 engine.
+Windows x64; Chromium 158.0.8127.37. This is the 1.3.1 release. The browser reports product version 1.3.1 on the 158 engine.
 
 ## Release history in this document
 
-1.2.0 was published on 22 October 2026 and withdrawn on 25 October 2026. It is no longer distributed, and its download addresses no longer resolve. The notes below therefore describe the whole sequence — 1.1.0, the release that was publicly downloadable before 1.2.0, then 1.2.0, then 1.3.0 — so that the history is complete without pointing at withdrawn files.
+1.2.0 was published on 22 October 2026 and withdrawn on 25 October 2026. It is no longer distributed, and its download addresses no longer resolve. The notes below therefore describe the whole sequence — 1.1.0, the release that was publicly downloadable before 1.2.0, then 1.2.0, then 1.3.0, then 1.3.1 — so that the history is complete without pointing at withdrawn files.
 
 ## Changes from 1.1.0 to 1.2.0
 
@@ -22,9 +22,15 @@ Windows x64; Chromium 158.0.8127.18. This is the 1.3.0 release. The browser repo
 - The default settings and the legal documents are unchanged from 1.2.0.
 - The 1.2.0 package carries two Privacy Sandbox attestations preload files that the 158 engine no longer produces for Windows: upstream 158 stopped adding them to the product directory and ships no desktop reader for them. This package therefore carries two runtime files fewer than the 1.2.0 package.
 
+## Changes from 1.3.0 to 1.3.1
+
+- The product display version moved from 1.3.0 to 1.3.1. The dovra CLI protocol stays `dovra.cli` 1.0; there are no breaking changes.
+- The Chromium engine moved from 158.0.8127.18 to 158.0.8127.37, a security update of the same 158 engine. The Dovra patch set was re-parented to the new engine source and the build configuration is unchanged apart from the engine and product versions.
+- The default settings and the legal documents are unchanged from 1.3.0.
+
 ## Validation scope
 
-**Run on the 1.3.0 binaries.** The 1.3.0 build was compared with the 1.2.0 package and with an earlier build of the same 158 engine; the comparison found no behavioural difference that the engine upgrade introduced. On the 1.3.0 binaries the following were exercised: launch and identity in headless and headed mode, the UA-CH version fields, the release gate for credits, legal files and telemetry, a 60-second network log, a direct network probe, the default search provider, the five basic Playwright operations, three File System Access frames, and the optional Toolkit command set.
+**Run on the 1.3.1 binaries.** The 1.3.1 build was compared with the published 1.3.0 package with identical parameters on both sides; the comparison found no behavioural difference beyond the version fields and the known upstream changes of the engine patch update. On the 1.3.1 binaries the following were exercised: launch and identity in headless mode (headed launch carries from the 158 engine of the published 1.3.0 by review), the UA-CH version fields, the release gate for credits, legal files and telemetry, a 60-second network log, a direct network probe, the default search provider, the five basic Playwright operations, three File System Access frames, and the optional Toolkit command set.
 
 **Carried from the previous engine.** The native-control matrix was not re-run on the 158 engine. It stands at 34 of 38 cases, adopted from direct, reviewed carry-forward and composed evidence on the 155 build of 1.2.0 — it is not 38 fresh runs on this pair. Core takeover, Human input, fresh authorization, stale-authorization rejection, disconnect handling and normal close have reviewed evidence from that build. Three virtual displays were checked at actual 100%, 150% and 200% Windows DPI settings on that build. The 53 selected configuration, profile, storage, controller and proxy regression cases were completed on that build as well. The four deferred scenarios are the same ones deferred at 1.2.0, with the same reasons: native context-menu paste, OS drag-and-drop, renderer-crash recovery, and manual input recovery after a safety-bar layout failure.
 

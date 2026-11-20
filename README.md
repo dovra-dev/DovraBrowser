@@ -1,8 +1,8 @@
-# Dovra 1.3.0
+# Dovra 1.3.1
 
-A Chromium-based browser for authorized agent workflows and web testing. Windows x64; Chromium 158.0.8127.18.
+A Chromium-based browser for authorized agent workflows and web testing. Windows x64; Chromium 158.0.8127.37.
 
-This is the 1.3.0 release. The product display version is 1.3.0 and the engine underneath is Chromium 158.0.8127.18, so the binaries in this release differ from every earlier Dovra package, including 1.2.0 (published on 22 October 2026 and withdrawn on 25 October 2026; it is no longer distributed). The two must not be mixed in one directory and their files are not interchangeable.
+This is the 1.3.1 release. The product display version is 1.3.1 and the engine underneath is Chromium 158.0.8127.37, so the binaries in this release differ from every earlier Dovra package, including 1.3.0 (published on 12 November 2026 on engine 158.0.8127.18) and the withdrawn 1.2.0. Packages of different versions must not be mixed in one directory and their files are not interchangeable.
 
 Read [QUICKSTART.md](QUICKSTART.md) before first use, [RELEASE-NOTES.md](RELEASE-NOTES.md) for tested scope and limitations, and the [Terms](https://dovra.dev/terms/) and [Privacy notice](https://dovra.dev/privacy/). The extracted browser ZIP also includes these notices in `legal/`. Use only systems you are authorized to access.
 
@@ -20,7 +20,7 @@ Use a separate profile when evaluating this version. Do not open an important ex
 
 ## Distribution
 
-Download the [Windows x64 portable ZIP](https://dl.dovra.dev/1.3.0/Dovra-1.3.0-win-x64-portable.zip) and compare its SHA-256 with [SHA256SUMS.txt](https://dl.dovra.dev/1.3.0/SHA256SUMS.txt). Browser ZIP SHA-256: `d04c91ecda3c414b6186802d2f2cb3fdac14576da9276a869de7d968e0b17d6b`. In the extracted browser ZIP, the browser is in `bin/` and `dovra_browser.exe` is the launcher. See [manifest.md](manifest.md) for core file identities and [SOURCE-MATERIALS.md](SOURCE-MATERIALS.md) for matching source and relinking materials. Optional Toolkit software is distributed separately. GitHub automatic repository archives are not browser packages or complete matching Chromium materials.
+Download the [Windows x64 portable ZIP](https://dl.dovra.dev/1.3.1/Dovra-1.3.1-win-x64-portable.zip) and compare its SHA-256 with [SHA256SUMS.txt](https://dl.dovra.dev/1.3.1/SHA256SUMS.txt). Browser ZIP SHA-256: `aab65b58c3ef12464dff1b7ab30452a8aedff8a8323b1572bc6f51fc72c7fa7b`. In the extracted browser ZIP, the browser is in `bin/` and `dovra_browser.exe` is the launcher. See [manifest.md](manifest.md) for core file identities and [SOURCE-MATERIALS.md](SOURCE-MATERIALS.md) for matching source and relinking materials. Optional Toolkit software is distributed separately. GitHub automatic repository archives are not browser packages or complete matching Chromium materials.
 
 The [Terms](https://dovra.dev/terms/) and [Privacy notice](https://dovra.dev/privacy/) were adopted on 17 October 2026 and are the same documents the 1.2.0 package carried. Component licences retain their own scope. Report small, redacted reproductions with the exact version; never send credentials or complete profiles.
 

@@ -1,8 +1,8 @@
-# Dovra 1.3.0 quick start
+# Dovra 1.3.1 quick start
 
-Windows x64; Chromium 158.0.8127.18.
+Windows x64; Chromium 158.0.8127.37.
 
-1. Download [Dovra-1.3.0-win-x64-portable.zip](https://dl.dovra.dev/1.3.0/Dovra-1.3.0-win-x64-portable.zip) from the [official release](https://github.com/dovra-dev/DovraBrowser/releases/tag/v1.3.0) and compare its full SHA-256 with [SHA256SUMS.txt](https://dl.dovra.dev/1.3.0/SHA256SUMS.txt). The browser ZIP SHA-256 is `d04c91ecda3c414b6186802d2f2cb3fdac14576da9276a869de7d968e0b17d6b`.
+1. Download [Dovra-1.3.1-win-x64-portable.zip](https://dl.dovra.dev/1.3.1/Dovra-1.3.1-win-x64-portable.zip) from the [official release](https://github.com/dovra-dev/DovraBrowser/releases/tag/v1.3.1) and compare its full SHA-256 with [SHA256SUMS.txt](https://dl.dovra.dev/1.3.1/SHA256SUMS.txt). The browser ZIP SHA-256 is `aab65b58c3ef12464dff1b7ab30452a8aedff8a8323b1572bc6f51fc72c7fa7b`.
 2. Extract into a new directory and keep the files together. Read the [README](README.md), [release notes](RELEASE-NOTES.md) and extracted ZIP's `legal/` notices. The [Terms](https://dovra.dev/terms/) and [Privacy notice](https://dovra.dev/privacy/) are also on the project website.
 3. Run `dovra_browser.exe`. For an explicit separate evaluation profile, run the following in PowerShell from the extracted directory:
 
